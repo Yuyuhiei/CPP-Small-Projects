@@ -2,20 +2,18 @@
 
 //Importing the in build libraries in CPP
 #include <iostream>
-#include <conio.h>
 #include <windows.h>
 using namespace std;
 
-void gotoxy(int x, int y){
 
+//Function to set the console cursor position using gotoxy function
+void gotoxy(short x, short y){
     HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD coord = {x, y};
-
+    COORD coord = {x,y};
     SetConsoleCursorPosition(console, coord);
-
 }
 
-//Array for the board
+//Array for the board 3x3
 char board[3][3] = {{'1','2','3'},{'4','5','6'},{'7','8','9'}};
 
 //Variable Declaration
@@ -25,10 +23,7 @@ char turn = 'X';
 bool draw = false;
 
 //Function to show the current status of the gaming board
-
 void display_board(){
-
-    //Render Game Board LAYOUT
 
     gotoxy(10,2);
     cout<<"\nPLAYER - 1 [X]\t PLAYER - 2 [O]\n";
@@ -65,11 +60,9 @@ void display_board(){
     gotoxy(10,12);
     cout<<"     |     |     ";
 
-
 }
 
 //Function to get the player input and update the board
-
 void player_turn(){
     if(turn == 'X'){
         cout<<"\nPlayer - 1 [X] turn : ";
